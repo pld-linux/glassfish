@@ -11,7 +11,7 @@ AS_INSTALL_LIB="$AS_INSTALL/modules"
 cd $AS_INSTALL
 if echo $@ | grep -q 'help'; then
   PAGER=${PAGER:-/bin/cat}
-  exec su glassfish -s $SHELL -c "$JAVACMD -jar $AS_INSTALL_LIB/admin-cli.jar $@" | sed s,asadmin,glassfish, | $PAGER
+  exec su glassfish -s /bin/sh -c "$JAVACMD -jar $AS_INSTALL_LIB/admin-cli.jar $@" | sed s,asadmin,glassfish, | $PAGER
 else
-  exec su glassfish -s $SHELL -c "$JAVACMD -jar $AS_INSTALL_LIB/admin-cli.jar $@"
+  exec su glassfish -s /bin/sh -c "$JAVACMD -jar $AS_INSTALL_LIB/admin-cli.jar $@"
 fi
