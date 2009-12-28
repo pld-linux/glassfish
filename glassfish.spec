@@ -78,8 +78,8 @@ fi
 %defattr(644,root,root,755)
 %doc glassfish/docs glassfish/legal
 %{_datadir}/%{name}
-%dir %config(noreplace) %attr(660,root,glassfish) %verify(not md5 mtime size) %{_sysconfdir}/%{name}
-%config(noreplace) %attr(770,root,glassfish) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/*
+%dir %config(noreplace) %attr(770,root,glassfish) %verify(not md5 mtime size) %{_sysconfdir}/%{name}
+%config(noreplace) %attr(660,root,glassfish) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/*
 %attr(754,root,root) /etc/rc.d/init.d/%{name}
 %attr(755,root,root) %{_sbindir}/%{name}
 %defattr(660,root,glassfish,770)
