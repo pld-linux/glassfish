@@ -39,7 +39,7 @@ start() {
 	fi
 
 	msg_starting "glassfish"
-	glassfish start-domain
+	daemon glassfish start-domain
 	RETVAL=$?
 	[ $RETVAL -eq 0 ] && touch /var/lock/subsys/glassfish
 }
@@ -50,8 +50,8 @@ stop() {
 		return
 	fi
 
-	# Stop daemons.
-	glassfish stop-domain
+	msg_stopping "glassfish"
+	daemon glassfish stop-domain
 	rm -f /var/lock/subsys/glassfish
 }
 
