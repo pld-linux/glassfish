@@ -1,0 +1,17 @@
+#!/bin/sh
+# $Id$
+
+# set $JAVACMD
+. @DATADIR@/java-utils/java-functions
+set_javacmd
+
+AS_INSTALL=@DATADIR@/glassfish
+AS_INSTALL_LIB="$AS_INSTALL/modules"
+
+cd $AS_INSTALL
+if echo $@ | grep -q 'help'; then
+  PAGER=${PAGER:-/bin/cat}
+  exec su glassfish -s $SHELL -c "$JAVACMD -jar $AS_INSTALL_LIB/admin-cli.jar $@" | sed s,asadmin,glassfish, | $PAGER
+else
+  exec su glassfish -s $SHELL -c "$JAVACMD -jar $AS_INSTALL_LIB/admin-cli.jar $@"
+fi
