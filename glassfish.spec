@@ -37,19 +37,25 @@ It is full implementation of JavaEE 6.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_datadir}/%{name},%{_sysconfdir}/%{name},/etc/rc.d/init.d,%{_sbindir},/var/lib/%{name}/domains}
+install -d $RPM_BUILD_ROOT{%{_datadir}/%{name},%{_sbindir}}
+install -d $RPM_BUILD_ROOT{%{_sysconfdir}/%{name},/etc/rc.d/init.d,%{_sbindir}}
+install -d $RPM_BUILD_ROOT{/var/lib/%{name}/domains,/var/log/%{name}}
 
 cp -a glassfish/{bin,lib,modules,osgi} $RPM_BUILD_ROOT%{_datadir}/%{name}
-cp -a glassfish/config/* $RPM_BUILD_ROOT%{_sysconfdir}/%{name}
+cp -a glassfish/config $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/config
 cp -a glassfish/domains/* $RPM_BUILD_ROOT/var/lib/%{name}/domains
+mv $RPM_BUILD_ROOT/var/lib/%{name}/domains/domain1/config $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/domain1
+mv $RPM_BUILD_ROOT/var/lib/%{name}/domains/domain1/logs $RPM_BUILD_ROOT/var/log/%{name}/domain1
 
 install -p %{SOURCE1} $RPM_BUILD_ROOT%{_sbindir}/%{name}
 install -p %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/%{name}
 
 sed -i 's,@DATADIR@,%{_datadir},' $RPM_BUILD_ROOT%{_sbindir}/%{name}
 
-ln -s %{_sysconfdir}/%{name} $RPM_BUILD_ROOT%{_datadir}/%{name}/config
+ln -s %{_sysconfdir}/%{name}/config $RPM_BUILD_ROOT%{_datadir}/%{name}/config
 ln -s /var/lib/%{name}/domains $RPM_BUILD_ROOT%{_datadir}/%{name}/domains
+ln -s %{_sysconfdir}/%{name}/domain1 $RPM_BUILD_ROOT/var/lib/%{name}/domains/domain1/config
+ln -s /var/log/%{name}/domain1 $RPM_BUILD_ROOT/var/lib/%{name}/domains/domain1/logs
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -78,9 +84,11 @@ fi
 %defattr(644,root,root,755)
 %doc glassfish/docs glassfish/legal
 %{_datadir}/%{name}
-%dir %config(noreplace) %attr(770,root,glassfish) %verify(not md5 mtime size) %{_sysconfdir}/%{name}
-%config(noreplace) %attr(660,root,glassfish) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/*
+%attr(770,root,glassfish) %dir %{_sysconfdir}/%{name}
+%attr(770,root,glassfish) %dir %{_sysconfdir}/%{name}/*
+%config(noreplace) %attr(660,root,glassfish) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/*/*
 %attr(754,root,root) /etc/rc.d/init.d/%{name}
 %attr(755,root,root) %{_sbindir}/%{name}
 %defattr(660,root,glassfish,770)
 /var/lib/%{name}
+%attr(770,root,glassfish) /var/log/%{name}
