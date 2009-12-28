@@ -76,7 +76,6 @@ case "$1" in
   	stop
 	;;
   restart)
-	checkconfig
 	stop
 	start
 	;;
@@ -87,7 +86,7 @@ case "$1" in
 	condrestart 7
 	;;
   *)
-	msg_usage "$0 {start|stop|restart|try-restart|reload|force-reload|checkconfig|status}"
+	msg_usage "$0 {start|stop|restart|try-restart|force-reload|status}"
 	exit 3
 esac
 
