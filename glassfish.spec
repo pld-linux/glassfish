@@ -1,3 +1,8 @@
+# TODO:
+# - check if is it possible to deploy apps into glassfish using rpm
+# - what to do with other top level directories (javadb, mq). Package them as
+#   subpackages? How? Package these applications as separate specs (and use
+#   original sources, not these bundled with glassfish)?
 #
 # Conditional build:
 %bcond_without	javadoc		# don't build javadoc
