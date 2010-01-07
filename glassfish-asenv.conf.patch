@@ -1,0 +1,15 @@
+--- glassfishv3/glassfish/config/asenv.conf	2009-12-03 07:29:22.000000000 +0100
++++ glassfishv3/glassfish/config/asenv.conf	2010-01-07 13:49:14.000000000 +0100
+@@ -6,9 +6,9 @@
+ # Use is subject to License Terms
+ #
+ 
+-AS_IMQ_LIB="../../mq/lib"
+-AS_IMQ_BIN="../../mq/bin"
++AS_IMQ_LIB="/usr/share/glassfish/mq/lib"
++AS_IMQ_BIN="/usr/share/glassfish/mq/bin"
+ AS_CONFIG="../config"
+ AS_INSTALL=".."
+ AS_DEF_DOMAINS_PATH="../domains"
+-AS_DERBY_INSTALL="../../javadb"
++AS_DERBY_INSTALL="/usr/share/glassfish/javadb"
