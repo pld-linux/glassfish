@@ -24,6 +24,7 @@ BuildRequires:	jpackage-utils
 BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
+BuildRequires:	unzip
 Requires:	jre >= 1.6.0.17
 Provides:	group(glassfish)
 Provides:	user(glassfish)
