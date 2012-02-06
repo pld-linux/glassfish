@@ -7,8 +7,6 @@
 # description:	JavaEE 6 application server
 #
 # processname:	glassfish
-# config:
-# pidfile:
 #
 # $Id$
 
