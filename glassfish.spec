@@ -7,14 +7,14 @@
 
 %include	/usr/lib/rpm/macros.java
 
-Summary:	JavaEE 6 aplication server
+Summary:	JavaEE 7 aplication server
 Name:		glassfish
-Version:	3
+Version:	4.0
 Release:	1
 License:	GPL
-Group:		Libraries/Java
-Source0:	http://download.java.net/glassfish/v%{version}/release/%{name}-v%{version}.zip
-# Source0-md5:	537b1c6574316ebc4dc69ba6dd26e213
+Group:		Networking/Daemons/Java
+Source0:	http://download.java.net/glassfish/%{version}/release/%{name}-%{version}.zip
+# Source0-md5:	9de52f5bd1d39aa7a20614361552861c
 Source1:	%{name}
 Source2:	%{name}.init
 Source3:	%{name}-javadb.init
@@ -32,11 +32,11 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Glassfish is lightweight, flexible, and open-source java application
-server. It is full implementation of JavaEE 6.
+Glassfish 4 is a lightweight, flexible, and open-source java 
+application server. It is the JavaEE 7 Reference Implementation.
 
 %prep
-%setup -q -n %{name}v%{version}
+%setup -q -n %{name}4
 
 %patch0 -p1
 
@@ -97,7 +97,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc glassfish/docs glassfish/legal
+%doc glassfish/docs
 %{_datadir}/%{name}
 %attr(770,root,glassfish) %dir %{_sysconfdir}/%{name}
 %attr(770,root,glassfish) %dir %{_sysconfdir}/%{name}/*
