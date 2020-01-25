@@ -5,7 +5,6 @@
 %bcond_without	javadoc		# don't build javadoc
 %bcond_without	tests		# don't build and run tests
 
-%include	/usr/lib/rpm/macros.java
 
 Summary:	JavaEE 7 aplication server
 Name:		glassfish
