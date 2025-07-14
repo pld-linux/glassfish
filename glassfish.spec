@@ -37,7 +37,7 @@ application server. It is the JavaEE 7 Reference Implementation.
 %prep
 %setup -q -n %{name}4
 
-%patch0 -p1
+%patch -P0 -p1
 
 find -name '*.bat' | xargs rm
 
