@@ -9,7 +9,7 @@
 Summary:	JavaEE 7 aplication server
 Name:		glassfish
 Version:	4.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		Networking/Daemons/Java
 Source0:	http://download.java.net/glassfish/%{version}/release/%{name}-%{version}.zip
